@@ -3,6 +3,7 @@
   'use strict';
   var fs = require('fs');
   var path = require('path');
+  var q = require('q');
   var spawnSync = require('child_process').spawnSync;
   var INSTALLFLAGNAME = '.installed';
 
@@ -14,7 +15,7 @@
   // install the node dependencies for this project
   function install (context) {
     // set properties
-    var q = context.requireCordovaModule('q');
+    //var q = context.requireCordovaModule('q');
     var async = new q.defer(); // eslint-disable-line
     var installFlagLocation = path.join(context.opts.projectRoot, 'plugins', context.opts.plugin.id, INSTALLFLAGNAME);
     var dependencies = require(path.join(context.opts.projectRoot, 'plugins', context.opts.plugin.id, 'package.json')).dependencies;

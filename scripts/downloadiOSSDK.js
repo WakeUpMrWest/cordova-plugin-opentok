@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+var Q = require("q")
 
 module.exports = function (context) {
     var IosSDKVersion = "OpenTok-iOS-2.15.3";
     var downloadFile = require('./downloadFile.js'),
         exec = require('./exec/exec.js'),
-        Q = context.requireCordovaModule('q'),
+        //Q = context.requireCordovaModule('q'),
         deferral = new Q.defer();
     console.log('Downloading OpenTok iOS SDK');
     downloadFile('https://s3.amazonaws.com/artifact.tokbox.com/rel/ios-sdk/' + IosSDKVersion + '.tar.bz2',
