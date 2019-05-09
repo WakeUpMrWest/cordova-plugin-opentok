@@ -11,8 +11,8 @@
 
     <platform name="android">
       <framework src="build-extras.gradle" custom="true" type="gradleReference" />
-      <framework src="com.android.support:appcompat-v7:26.+" />
-      <framework src="com.android.support:design:26.+" />
+      <framework src="com.android.support:appcompat-v7:27.+" />
+      <framework src="com.android.support:design:27.+" />
       <framework src="com.android.volley:volley:1.1.0" />
       <asset src="www/opentok.js" target="opentok.js" />
   	  <source-file src="src/android/OpenTokAndroidPlugin.java" target-dir="src/com/tokbox/cordova/" />
