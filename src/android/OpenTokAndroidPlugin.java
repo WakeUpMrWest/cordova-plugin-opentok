@@ -246,8 +246,13 @@ public class OpenTokAndroidPlugin extends CordovaPlugin
         }
 
         public void stopPublishing() {
-            ViewGroup parent = (ViewGroup) webView.getView().getParent();
-            parent.removeView(this.mView);
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ViewGroup parent = (ViewGroup) webView.getView().getParent();
+                    parent.removeView(this.mView);
+                }
+            });
             if(this.mPublisher != null){
                 try {
                     mSession.unpublish(this.mPublisher);
@@ -258,8 +263,13 @@ public class OpenTokAndroidPlugin extends CordovaPlugin
         }
 
         public void destroyPublisher() {
-            ViewGroup parent = (ViewGroup) webView.getView().getParent();
-            parent.removeView(this.mView);
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ViewGroup parent = (ViewGroup) webView.getView().getParent();
+                    parent.removeView(this.mView);
+                }
+            });
             if (this.mPublisher != null) {
                 this.mPublisher.destroy();
                 this.mPublisher = null;
