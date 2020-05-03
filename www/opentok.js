@@ -415,7 +415,10 @@ TBPublisher = (function() {
   };
 
   TBPublisher.prototype.removePublisherElement = function() {
-    this.pubElement.parentNode.removeChild(this.pubElement);
+    if (this.pubElement === false) return false;
+    if (this.pubElement.parentNode) {
+      this.pubElement.parentNode.removeChild(this.pubElement);
+    }
     return this.pubElement = false;
   };
 
@@ -1067,7 +1070,12 @@ TBSubscriber = (function() {
   }
 
   TBSubscriber.prototype.eventReceived = function(response) {
-    return this[response.eventType](response.data);
+    var evtRecFunc = this[response.eventType];
+    if (evtRecFunc) {
+      return evtRecFunc(response.data)
+    } else {
+      console.log(`JS: TBSubscriber: no handler for ${response.eventType} event`)
+    }
   };
 
   TBSubscriber.prototype.connected = function(event) {
